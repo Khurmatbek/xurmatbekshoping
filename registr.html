@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registr</title>
+    <link rel="stylesheet" href="css/registr.css">
+</head>
+
+<body>
+    <main class="registr-main">
+    
+        <!--  site section part -->
+        <section class="registr-section registr">
+            <div class="container">
+                <div class="registr__wrapper">
+                    <ul class="registr__list">
+                        <li class="registr__item">
+                            <div class="registr__top-part ">
+                                <div>
+                                    <h3 class="registr__brend">
+                                        Welcome to <span class="registr__user">user</span>
+                                    </h3>
+                                </div>
+                                <span class="registr__sign-part">
+
+                                    <a class="registr__sign-link" href="./login.html">
+                                        Not Account? <br> <strong class="registr__signUp"> Sign in</strong>
+                                    </a>
+                                </span>
+                            </div>
+                            <h1 class="registr__title">
+                                Sign Up
+                            </h1>
+                            <form class="registr__form " autocomplete="on">
+                                <label class="registr__email-label">
+                                    Enter your username or email address
+                                    <input class="registr__email-input" type="email"
+                                        placeholder="Username or email address" aria-label="Username or email address"
+                                        required autocomplete="on">
+                                </label>
+                                <div class="registr__about-part">
+                                    <label class="registr__username-label">
+                                        User Name
+                                        <input class="registr__username" type="text" placeholder=" User Name" required>
+                                    </label>
+                                    <label class="registr__usernumber-label">
+                                        Contact Number
+                                        <input class="registr__usernumber " type="tel" placeholder="Contact Number"
+                                            value="+998" required>
+                                    </label>
+                                </div>
+                                <label class="registr__password-label">
+                                    Enter your Password
+                                    <input class="registr__password-input" type="password" placeholder="User password "
+                                        aria-label="User password" required autocomplete="on">
+                                </label>
+                                <div class="registr__btn-wrapp">
+                                    <button class="registr__sign-btn">
+                                        Sign Up
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+    <script src="./js/registr.js"></script>
+</body>
+
+</html>
