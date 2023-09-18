@@ -65,16 +65,17 @@ body {
     position: absolute;
     z-index: 20;
     max-width: 539px;
+    min-width: 250px;
     width: 100%;
     padding: 0;
-    padding: 44px;
+    padding: 20px;
     list-style: none;
     border-radius: 40px;
     border-radius: 40px;
     border: 2px solid rgba(0, 0, 255, 0);
     background: rgba(131, 168, 186, 0.674);
     top: calc(50% - 40px);
-    left: calc(50% + 30px);
+    /* left: calc(50% + 30px); */
     -webkit-box-shadow: 3px 4px 10px 15px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 3px 4px 10px 15px rgba(34, 60, 80, 0.2);
     box-shadow: 3px 4px 10px 15px rgba(14, 5, 91, 0.2);
@@ -147,7 +148,7 @@ body {
     max-width: 298px;
     width: 100%;
     text-align: center;
-    padding: 15px 30px 15px 30px;
+    padding: 15px 20px 15px 20px;
     color: #4285f4;
     font-family: "Poppins";
     font-size: 16px;

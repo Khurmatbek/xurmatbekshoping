@@ -298,7 +298,8 @@ body {
     position: absolute;
     z-index: 3;
     display: block;
-    max-width: 600px;
+    max-width:600px;
+    /* width: 100%; */
     gap: 20px;
     border: 1px solid red;
     top: calc(50% + 70px);
