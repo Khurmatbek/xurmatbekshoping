@@ -156,7 +156,8 @@ function renderFunction(data, nodelist, change) {
         fragment.appendChild(itemelement);
         imagelement.src = element.image;
         titleelement.textContent = element.title;
-        priceelement.textContent = `Narxi: ${element.price}`;
+        priceelement.textContent = `Narxi::${element.price * element.product_number}`;
+        console.log(newObj.product)
         monthelemet.textContent = `Muddati: ${element.month}`;
 
     })
@@ -207,7 +208,7 @@ list.addEventListener("click", (evt) => {
         lovescount.textContent = BookArr.length;
         renderFunction(BookArr, favoritesList, 2);
     }
-    
+
 
     /*  buy */
     if (evt.target.matches(".saved")) {
@@ -300,8 +301,10 @@ buylist.addEventListener("click", evt => {
         const NEWS = BuyArr.find(num => {
             return num.id == BTNid;
         })
+        if (NEWS.product_number > 1) {
+            --NEWS.product_number;
+        }
 
-        --NEWS.product_number;
         const RES = newObj.product.find(sum => {
             return sum.id == BTNid;
         })
