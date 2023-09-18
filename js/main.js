@@ -5,6 +5,7 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/items/desktop/721e7285b298cde5b3d0c973ed8d7b632022060312004963698PRIyhV3K1W.jpg.webp",
         price: 999000,
         month: 12,
+        product_number: 1,
 
     }
     ,
@@ -14,7 +15,7 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/items/desktop/5e15c06e88c8c.jpeg.webp",
         price: 2209000,
         month: 12,
-
+        product_number: 1,
     },
     {
         id: 3,
@@ -22,7 +23,7 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/items/desktop/a5b93aaec935a59987f8a5f2280e7cd720230731164401300313McoeNbOi4.jpg.webp",
         price: 369000,
         month: 12,
-
+        product_number: 1,
     },
     {
         id: 4,
@@ -30,7 +31,7 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/main_image/desktop//6435066082d9f.png.webp",
         price: 3000000,
         month: 12,
-
+        product_number: 1,
     },
     {
         id: 5,
@@ -38,14 +39,14 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/main_image/desktop//6452084011451.png.webp",
         price: 3500000,
         month: 12,
-
+        product_number: 1,
     }, {
         id: 6,
         title: " Xiaomi Mi Band 8 Qora smart-bilaguzugi ",
         image: "https://assets.asaxiy.uz/product/main_image/desktop//646dd166918e9.png.webp",
         price: 999000,
         month: 12,
-
+        product_number: 1,
     }
     , {
         id: 7,
@@ -53,7 +54,7 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/main_image/desktop//63d4f87c26276.jpg.webp",
         price: 80000,
         month: 12,
-
+        product_number: 1,
     },
     {
         id: 8,
@@ -61,7 +62,7 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/items/desktop/f0935e4cd5920aa6c7c996a5ee53a70f2023062209454489533jZ2DZnLaTB.jpg.webp",
         price: 159000,
         month: 12,
-
+        product_number: 1,
     },
 
     {
@@ -70,14 +71,18 @@ const shoping = [
         image: "https://assets.asaxiy.uz/product/main_image/desktop//64d48cb779be7.jpg.webp",
         price: 150000,
         month: 12,
-
+        product_number: 1,
     },
 
 ]
-
+const userId = JSON.parse(localStorage.getItem("userId"));
+const newObj = {
+    userId: userId,
+    product: [],
+}
 
 /* userning id si  */
-const userId = JSON.parse(localStorage.getItem("userId"));
+
 // console.log(userId)
 const elform = document.querySelector(".form");
 const searchInput = document.querySelector(".search");
@@ -119,10 +124,15 @@ function renderFunction(data, nodelist, change) {
         const plus = document.createElement("button");
         plus.textContent = "+";
         plus.classList.add("plus");
+        plus.dataset.id = element.id
         const minus = document.createElement("button");
         minus.textContent = "-";
         minus.classList.add("minus");
+        minus.dataset.id = element.id;
         const buycount = document.createElement("p");
+        buycount.textContent = element.product_number;
+        buycount.style.color = "green"
+        buycount.style.fontSize = "24px"
         buycount.classList.add("buycount");
 
         if (change == 1) {
@@ -141,8 +151,7 @@ function renderFunction(data, nodelist, change) {
         }
         if (change == 3) {
             countWrapperPlusMinus.append(plus, minus);
-            buycount.textContent = 1;
-            itemelement.append(titleelement, priceelement, countWrapperPlusMinus)
+            itemelement.append(titleelement, priceelement, buycount, countWrapperPlusMinus)
         }
         fragment.appendChild(itemelement);
         imagelement.src = element.image;
@@ -254,10 +263,7 @@ favoritesList.addEventListener("click", evt => {
 })
 
 /*   yangi obekt yaratamiz */
-const newObj = {
-    userId: userId,
-    product: [],
-}
+
 // console.log(newObj)
 /*  user royhatdan o'tgan  array */
 const registrArr = JSON.parse(localStorage.getItem("registrArr"));
@@ -269,6 +275,47 @@ saved_btn.addEventListener("click", evt => {
     buylist.classList.toggle("buylistview");
     favoritesList.classList.remove("lovelist")
 })
+
+buylist.addEventListener("click", evt => {
+    if (evt.target.matches(".plus")) {
+        const BTNid = evt.target.dataset.id;
+        const NEWS = BuyArr.find(num => {
+            return num.id == BTNid;
+        })
+        ++NEWS.product_number;
+        const RES = newObj.product.find(sum => {
+            return sum.id == BTNid;
+        })
+        if (!RES) {
+            newObj.product.push(NEWS);
+        }
+
+    }
+    if (evt.target.matches(".minus")) {
+        const BTNid = evt.target.dataset.id;
+        const NEWS = BuyArr.find(num => {
+            return num.id == BTNid;
+        })
+
+        --NEWS.product_number;
+        const RES = newObj.product.find(sum => {
+            return sum.id == BTNid;
+        })
+        if (!RES) {
+            newObj.product.push(NEWS);
+        }
+    }
+    console.log(newObj)
+    if (newObj.userId == null) {
+        alert("Autenfikatsiya jarayonidan o'ting  ");
+        window.location.href = "login.html"
+    }
+    buylist.innerHTML = ""
+    renderFunction(BuyArr, buylist, 3);
+    registrArr[0].product.push(newObj)
+    console.log(registrArr)
+})
+
 
 
 

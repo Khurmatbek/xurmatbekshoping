@@ -19,6 +19,7 @@ form.addEventListener("submit", (evt) => {
         phone: usernumberValue,
         pass: passwordValue,
         product: [],
+        
     }
     localStorage.setItem("userId", JSON.stringify(registrObj.id));
     if (usernameValue.length > 2 && usernumberValue.length > 12 && passwordValue.length > 7) {

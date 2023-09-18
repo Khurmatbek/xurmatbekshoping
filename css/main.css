@@ -99,7 +99,7 @@ body {
 .form__label {
     width: 100%;
     display: flex;
-    border: 2px solid #008dff;
+    border: 1px solid #008dff;
     border-radius: 10px;
 }
 .form__search {
@@ -108,7 +108,7 @@ body {
     color: #008dff;
     line-height: 16px;
     border: 2px solid #008dff;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
     font-size: 15px;
     outline: none;
     border: none;
@@ -125,6 +125,7 @@ body {
     color: white;
     font-size: 15px;
     letter-spacing: 1px;
+    border-radius: 0 10px 10px 0;
 }
 .nav__list {
     display: flex;
@@ -142,6 +143,7 @@ body {
     flex-direction: column;
     display: flex;
     background-color: transparent;
+    border: 0 10px 10px 0;
 }
 .nav__item:nth-child(1) .header__btn::before {
     width: 32px;
@@ -337,6 +339,26 @@ body {
 }
 .buy {
     display: none;
+}
+.buycount {
+    margin: 0;
+    margin-left: 30px;
+   
+
+}
+.plus,
+.minus {
+    width: 30px;
+    height: 30px;
+    background-color: #008dff;
+    border: none;
+    outline: none;
+    margin-right: 10px;
+    border-radius: 10px;
+}
+.plus:active,
+.minus:active {
+    background-color: red;
 }
 .buylistview {
     padding: 0;
