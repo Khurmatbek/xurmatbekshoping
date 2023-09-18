@@ -207,7 +207,7 @@ list.addEventListener("click", (evt) => {
         lovescount.textContent = BookArr.length;
         renderFunction(BookArr, favoritesList, 2);
     }
-
+    
 
     /*  buy */
     if (evt.target.matches(".saved")) {
@@ -219,6 +219,10 @@ list.addEventListener("click", (evt) => {
         const secBuyFind = BuyArr.find(secbuy => {
             return secbuy.id == BtnID
         })
+        if (newObj.userId == null) {
+            alert("Autenfikatsiya jarayonidan o'ting  ");
+            window.location.href = "login.html"
+        }
         if (!secBuyFind) {
             BuyArr.push(BuyFind)
         }
@@ -239,7 +243,7 @@ fovoriteBtn.addEventListener("click", evt => {
 
 const buyProduct = JSON.parse(localStorage.getItem("buyProduct") || "[]");
 localStorage.setItem("buyProduct", JSON.stringify(buyProduct));
-renderFunction(BookArr, favoritesList, 2);
+// renderFunction(BookArr, favoritesList, 2);
 
 
 
@@ -306,10 +310,6 @@ buylist.addEventListener("click", evt => {
         }
     }
     console.log(newObj)
-    if (newObj.userId == null) {
-        alert("Autenfikatsiya jarayonidan o'ting  ");
-        window.location.href = "login.html"
-    }
     buylist.innerHTML = ""
     renderFunction(BuyArr, buylist, 3);
     registrArr[0].product.push(newObj)
